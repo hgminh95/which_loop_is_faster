@@ -26,5 +26,37 @@ static void BM_LoopNo2(benchmark::State& state) {
   }
 }
 
+constexpr int CACHE_LINE = 64;
+
+struct BigElem {
+  uint8_t data[CACHE_LINE];
+};
+
+static void BM_LoopNo1WithBigElem(benchmark::State& state) {
+  std::vector<BigElem> arr;
+  auto N = state.range(0);
+  arr.resize(N * N);
+
+  for (auto _ : state) {
+    for (int i = 0; i < N; ++i)
+      for (int j = 0; j < N; ++j)
+        benchmark::DoNotOptimize(arr[i * N + j].data[0]);
+  }
+}
+
+static void BM_LoopNo2WithBigElem(benchmark::State& state) {
+  std::vector<BigElem> arr;
+  auto N = state.range(0);
+  arr.resize(N * N);
+
+  for (auto _ : state) {
+    for (int i = 0; i < N; ++i)
+      for (int j = 0; j < N; ++j)
+        benchmark::DoNotOptimize(arr[j * N + i].data[0]);
+  }
+}
+
 BENCHMARK(BM_LoopNo1)->Range(16, 2 << 12);
 BENCHMARK(BM_LoopNo2)->Range(16, 2 << 12);
+BENCHMARK(BM_LoopNo1WithBigElem)->Range(16, 2 << 10);
+BENCHMARK(BM_LoopNo2WithBigElem)->Range(16, 2 << 10);

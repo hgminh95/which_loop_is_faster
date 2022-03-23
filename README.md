@@ -8,22 +8,27 @@ Code example for this blog post (insert link here later)
 $ bazel build -c opt --copt=-O3 :bm_loop
 
 $ ./bazel-bin/bm_loop
-Running ./bazel-bin/bm_loop
-Run on (12 X 3192 MHz CPU s)
-Load Average: 0.52, 0.58, 0.59
-----------------------------------------------------------
-Benchmark                Time             CPU   Iterations
-----------------------------------------------------------
-BM_LoopNo1/16          103 ns         67.0 ns     11200000
-BM_LoopNo1/64         1682 ns         1088 ns       746667
-BM_LoopNo1/512      100243 ns        61662 ns        17231
-BM_LoopNo1/4096    8177495 ns      5312500 ns          100
-BM_LoopNo1/8192   33684497 ns     22222222 ns           45
-BM_LoopNo2/16          128 ns          103 ns      6400000
-BM_LoopNo2/64         1941 ns         1709 ns       896000
-BM_LoopNo2/512      781664 ns       546623 ns         1858
-BM_LoopNo2/4096  139822221 ns     95312500 ns           10
-BM_LoopNo2/8192  792298555 ns    687500000 ns            1
+---------------------------------------------------------------------
+Benchmark                           Time             CPU   Iterations
+---------------------------------------------------------------------
+BM_LoopNo1/16                     131 ns          108 ns      8960000
+BM_LoopNo1/64                    1965 ns         1726 ns       407273
+BM_LoopNo1/512                 129987 ns        97656 ns         5600
+BM_LoopNo1/4096               9786057 ns      8789062 ns          112
+BM_LoopNo1/8192              39223035 ns     21354167 ns           30
+BM_LoopNo2/16                     128 ns         73.4 ns     10000000
+BM_LoopNo2/64                    1975 ns         1420 ns       407273
+BM_LoopNo2/512                 784854 ns       619071 ns         1792
+BM_LoopNo2/4096             139502128 ns    111111111 ns            9
+BM_LoopNo2/8192             794375658 ns    656250000 ns            1
+BM_LoopNo1WithBigElem/16          101 ns         83.7 ns      8960000
+BM_LoopNo1WithBigElem/64         3625 ns         3139 ns       224000
+BM_LoopNo1WithBigElem/512     1043527 ns       731485 ns         1303
+BM_LoopNo1WithBigElem/2048   27770281 ns     15988372 ns           43
+BM_LoopNo2WithBigElem/16          139 ns          116 ns     10000000
+BM_LoopNo2WithBigElem/64        11965 ns         7500 ns       100000
+BM_LoopNo2WithBigElem/512     2746846 ns      1726423 ns          896
+BM_LoopNo2WithBigElem/2048   51166731 ns     30330882 ns           17
 ```
 
 To investigate performance issue, you can use below commands:
