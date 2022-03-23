@@ -1,0 +1,12 @@
+cc_binary(
+    name = "bm_loop",
+    srcs = glob([
+        "*.cpp"
+    ]),
+    deps = [
+        "@benchmark//:benchmark_main",
+    ],
+    linkopts = [
+        "-lpthread",
+    ],
+)
