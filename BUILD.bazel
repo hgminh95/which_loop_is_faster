@@ -1,7 +1,14 @@
 cc_binary(
+    name = "lock_mem",
+    srcs = glob([
+        "lock_mem.cpp",
+    ]),
+)
+
+cc_binary(
     name = "bm_loop",
     srcs = glob([
-        "*.cpp"
+        "loop.cpp"
     ]),
     deps = [
         "@benchmark//:benchmark_main",
