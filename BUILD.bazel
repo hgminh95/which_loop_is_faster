@@ -17,3 +17,16 @@ cc_binary(
         "-lpthread",
     ],
 )
+
+cc_binary(
+    name = "bm_loop_what_else",
+    srcs = glob([
+        "loop_what_else.cpp"
+    ]),
+    deps = [
+        "@benchmark//:benchmark_main",
+    ],
+    linkopts = [
+        "-lpthread",
+    ],
+)
